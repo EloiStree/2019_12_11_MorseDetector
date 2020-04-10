@@ -1,7 +1,6 @@
-
 {                                                                                
   "name": "be.eloistree.macrotriggering",                              
-  "displayName": "2019_12_11_MorseDetector",                        
+  "displayName": "MorseDetector",                        
   "version": "0.0.1",                         
   "unity": "2018.1",                             
   "description": "You package description",                         
