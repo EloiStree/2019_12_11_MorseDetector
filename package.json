@@ -1,10 +1,14 @@
-{                                                                                
-  "name": "be.eloistree.MorseDetector",                              
-  "displayName": "Morse Detector",                        
-  "version": "0.0.1",                         
-  "unity": "2018.1",                             
-  "description": "You package description",                         
-  "keywords": ["Script","Tool"],                       
-  "category": "Script",                   
-  "dependencies":{}     
-} 
+ {
+  "name": "be.eloistree.morsedetector",
+  "displayName": "Morse Detector",
+  "version": "0.0.1",
+  "unity": "2018.3",
+  "keywords": [
+    "unity",
+    "tools"
+  ],                   
+  "category": "Script",  
+  "description": "Allow to listen to morse from different sources",
+  "dependencies": {},
+  "relatedPackages": {}
+}
