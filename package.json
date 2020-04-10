@@ -1,11 +1,6 @@
 {                                                                                
-<<<<<<< HEAD
   "name": "be.eloistree.MorseDetector",                              
   "displayName": "Morse Detector",                        
-=======
-  "name": "be.eloistree.macrotriggering",                              
-  "displayName": "MorseDetector",                        
->>>>>>> e771566398e06b6977eedffd0e816ee33cf26cc9
   "version": "0.0.1",                         
   "unity": "2018.1",                             
   "description": "You package description",                         
