@@ -33,11 +33,25 @@ public class MorseGameManager : MonoBehaviour {
 
         for (int i = 0; i < m_letterDisplayer.Length; i++)
         {
-            if (value.GetMorseValue() == m_letterDisplayer[i].GetLinkedMorseValue()) {
+            if (value.GetMorseValue() == m_letterDisplayer[i].GetLinkedMorseValue())
+            {
                 m_letterDisplayer[i].Reset();
                 m_scoreDisplay.text = (++m_playerScore).ToString();
             }
-            
+
+        }
+    }
+    public void CheckForGoodAnswerIgnoringNameId(MorseStack value)
+    {
+
+        for (int i = 0; i < m_letterDisplayer.Length; i++)
+        {
+            if (value.GetMorseValue() == m_letterDisplayer[i].GetLinkedMorseValue())
+            {
+                m_letterDisplayer[i].Reset();
+                m_scoreDisplay.text = (++m_playerScore).ToString();
+            }
+
         }
     }
 
