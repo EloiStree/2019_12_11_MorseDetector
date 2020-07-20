@@ -8,7 +8,8 @@
     "tools"
   ],                   
   "category": "Script",  
-  "description": "Allow to listen to morse from different sources",
-  "dependencies": {},
+  "description": "Allow to listen to morse from different sources",                   
+  "dependencies":{"be.eloistree.license":"0.0.1"}   
+
   "relatedPackages": {}
 }
