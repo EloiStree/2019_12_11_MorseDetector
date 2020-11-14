@@ -147,7 +147,7 @@ public class MorseStacker
         }
     }
 
-    internal static bool AreEquals(MorseStack a, MorseStack b)
+    public static bool AreEquals(MorseStack a, MorseStack b)
     {
         if (a.GetIdName() != b.GetIdName()) 
             return false;

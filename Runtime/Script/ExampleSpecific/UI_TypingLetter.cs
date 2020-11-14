@@ -22,7 +22,7 @@ public class UI_TypingLetter : MonoBehaviour {
         Reset();
     }
 
-    internal void Reset()
+    public void Reset()
     {
         m_morseDisplay.text = "";                                
         m_letterDisplay.text = "";
@@ -30,7 +30,7 @@ public class UI_TypingLetter : MonoBehaviour {
         m_isSetWithData = false;
     }
 
-    internal bool IsDefine()
+    public bool IsDefine()
     {
         return m_isSetWithData;
     }

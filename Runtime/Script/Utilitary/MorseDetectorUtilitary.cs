@@ -21,7 +21,7 @@ public static class MorseDetectorUtilitary  {
         }
     }
 
-    internal static int GetDetectorsCount()
+    public static int GetDetectorsCount()
     {
         return m_detectors.Length;
     }

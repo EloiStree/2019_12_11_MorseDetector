@@ -1,5 +1,6 @@
 {
-    "name": "MorseDetector",
+    "name": "be.eloistree.morsedetector",
+    "rootNamespace": "",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

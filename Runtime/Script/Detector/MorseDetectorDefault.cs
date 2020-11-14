@@ -259,7 +259,7 @@ public class MorseDetectorDefault : MorseDetector {
             m_time = time;
         }
 
-        internal void Reset()
+        public void Reset()
         {
             m_time = 0;
             m_lastTimeRecorded = 0;

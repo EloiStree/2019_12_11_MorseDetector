@@ -16,7 +16,7 @@ public class MorseEmittor_KeypressListener : MorseEmittorAbstract
         SetKeyboardListened(m_keypressed);
     }
 
-    internal void SetKeyboardListened(KeyCode keyCodeId)
+    public void SetKeyboardListened(KeyCode keyCodeId)
     {
         m_keypressed = keyCodeId;
         m_emittorName = "Key Pressed " + m_keypressed.ToString();
