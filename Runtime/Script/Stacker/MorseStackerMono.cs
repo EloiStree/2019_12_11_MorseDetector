@@ -54,7 +54,7 @@ public class MorseStacker
     public static void AddStackValidatedListener(MorseStackEvent listener) { m_onStackValidated += listener; }
     public static void RemoveStackValidatedListener(MorseStackEvent listener) { m_onStackValidated -= listener; }
     public static Dictionary<string, MorseStack> m_stacks = new Dictionary<string, MorseStack>();
-    public static Dictionary<string, float> m_stacksAutoValidationDelay = new Dictionary<string, float>();
+    public static Dictionary<string, MorseStackState> m_stacksAutoValidationDelay = new Dictionary<string, MorseStackState>();
 
     public static void StackOn(string stackName, MorseKey key)
     {
@@ -87,7 +87,7 @@ public class MorseStacker
         if (!m_stacks.ContainsKey(stackName))
             m_stacks.Add(stackName, new MorseStack(stackName));
         if (!m_stacksAutoValidationDelay.ContainsKey(stackName))
-            m_stacksAutoValidationDelay.Add(stackName, 0f);
+            m_stacksAutoValidationDelay.Add(stackName, new MorseStackState() { m_information = m_stacks[stackName], m_stacksAutoValidationDelay= 0f});
     }
 
    
@@ -96,7 +96,7 @@ public class MorseStacker
     {
         CheckForInstanceInScene();
         CheckIfExisting(stackName);
-        m_stacksAutoValidationDelay[stackName] = validationDelay;
+        m_stacksAutoValidationDelay[stackName].m_stacksAutoValidationDelay = validationDelay;
     }
 
     public static void Validate(string stackName)
@@ -128,21 +128,32 @@ public class MorseStacker
     {
         return m_stacks.Keys.ToList();
     }
+    public static DateTime m_currentRefresh;
+    public static DateTime m_previousRefresh;
+    public static void CheckAutoValidationWithRealTimepass() {
+
+        m_currentRefresh = DateTime.Now;
+        double t = (m_currentRefresh - m_previousRefresh).TotalSeconds;
+        MorseStacker.CheckAutoValidationWithTimepass((float)t);
+        m_previousRefresh = m_currentRefresh;
+    }
+
     public static void CheckAutoValidationWithTimepass(float timepass)
     {
-        List<string> names = GetStackNameList();
+        List<MorseStackState> stacks = m_stacksAutoValidationDelay.Values.ToList();
         float timeLeft;
-        for (int i = 0; i < names.Count; i++)
+        for (int i = 0; i < stacks.Count; i++)
         {
-            CheckIfExisting(names[i]);
-            timeLeft = m_stacksAutoValidationDelay[names[i]];
-            if (timeLeft > 0f) {
+            timeLeft = stacks[i].m_stacksAutoValidationDelay;
+            if (timeLeft > 0f)
+            {
                 timeLeft -= timepass;
-                if (timeLeft <= 0f) {
+                if (timeLeft <= 0f)
+                {
                     timeLeft = 0f;
-                    Validate(names[i]);
+                    Validate(stacks[i].GetNameId()) ;
                 }
-                m_stacksAutoValidationDelay[names[i]] = timeLeft;
+                stacks [i].m_stacksAutoValidationDelay= timeLeft;
             }
         }
     }
@@ -155,6 +166,17 @@ public class MorseStacker
         
     }
 }
+
+public class MorseStackState {
+    public float m_stacksAutoValidationDelay;
+    public MorseStack m_information;
+    public string GetNameId() {
+        return m_information.GetIdName();
+    }
+   
+
+}
+
 [System.Serializable]
 public class MorseStack
 {
